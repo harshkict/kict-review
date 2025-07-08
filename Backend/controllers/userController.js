@@ -16,9 +16,14 @@ const userController = {
 
             await newUser.save();
             res.status(201).json({ message: "User created successfully", user: newUser });
-        } catch (error) {
-            res.status(500).json({ message: "Error creating user", error });
-        }
+        }catch (error) {
+            console.error("User creation error:", error); // Helpful for Vercel logs
+            res.status(500).json({ 
+            message: "Error creating user", 
+        error: error.message || error.toString() 
+    });
+}
+
     },
 
     // Get all users
