@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
@@ -18,7 +19,7 @@ function AddBusiness() {
 
     try {
       const response = await axios.post(
-        "https://review-backend-y75n.onrender.com/businesses/add",
+        "http://kict-review-backend.vercel.app/businesses/add",
         {
           Name: formData.businessName,
           Link: formData.businessLink,

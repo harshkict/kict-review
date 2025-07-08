@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 import Sidebar from './Sidebar'
 import { Outlet } from 'react-router-dom';

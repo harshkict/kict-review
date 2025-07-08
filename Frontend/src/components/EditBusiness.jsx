@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -16,7 +17,7 @@ function EditBusiness() {
   // Fetch all businesses from the API
   const fetchBusinesses = async () => {
     try {
-      const response = await axios.get("https://review-backend-y75n.onrender.com/businesses/all");
+      const response = await axios.get("http://kict-review-backend.vercel.app/businesses/all");
       setBusinesses(response.data);
       setFilteredBusinesses(response.data); // Initialize filtered list
     } catch (error) {
@@ -41,7 +42,7 @@ function EditBusiness() {
 
   const handleDelete = async (businessId) => {
     try {
-      await axios.delete(`https://review-backend-y75n.onrender.com/businesses/del/${businessId}`);
+      await axios.delete(`http://kict-review-backend.vercel.app/businesses/del/${businessId}`);
       fetchBusinesses();
     } catch (error) {
       console.error("Error deleting business:", error);

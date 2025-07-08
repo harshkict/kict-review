@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { ArrowLeft, Edit2 } from "lucide-react";
 import { useLocation } from "react-router-dom";
@@ -19,7 +21,7 @@ const AddReview = () => {
     const fetchBusinessData = async () => {
         try {
             const response = await axios.get(
-                `https://review-backend-y75n.onrender.com/businesses/get/${location.state.Id}`
+                `http://kict-review-backend.vercel.app/businesses/get/${location.state.Id}`
             );
             const unFilterData = response.data.Review.filter(
                 (value) => value.Status === "Incomplete"
@@ -64,7 +66,7 @@ const AddReview = () => {
         e.preventDefault();
         try {
             await axios.post(
-                `https://review-backend-y75n.onrender.com/businesses/add/${location.state.Id}/review`,
+                `http://kict-review-backend.vercel.app/businesses/add/${location.state.Id}/review`,
                 { Description: description }
             );
             setDescription(""); // Reset the form
@@ -81,7 +83,7 @@ const AddReview = () => {
                 return;
             }
             await axios.post(
-                `https://review-backend-y75n.onrender.com/businesses/${location.state.Id}/reviews/bulk-upload`,
+                `http://kict-review-backend.vercel.app/businesses/${location.state.Id}/reviews/bulk-upload`,
                 { reviews: jsonData }
             );
             alert("Bulk reviews uploaded successfully!");
@@ -105,7 +107,7 @@ const AddReview = () => {
         e.preventDefault(); // Prevent default form submission
         try {
             await axios.put(
-                `https://review-backend-y75n.onrender.com/businesses/put/${location.state.Id}`,
+                `http://kict-review-backend.vercel.app/businesses/put/${location.state.Id}`,
                 { Name: editForm.name, Link: editForm.link }
             );
             setShowModal(false); // Close modal

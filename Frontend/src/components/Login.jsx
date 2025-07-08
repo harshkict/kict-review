@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
-  const baseUrl = "https://review-backend-y75n.onrender.com";
+  const baseUrl = "http://kict-review-backend.vercel.app";
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [formData, setFormData] = useState({
     UserName: "",
