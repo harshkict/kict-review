@@ -4,6 +4,7 @@ const userRoutes = require("./routes/userRoute");
 const businessRoutes = require("./routes/businessRoutes");
 
 const app = express();
+require('dotenv').config();
 require("./config/db")
 
 
