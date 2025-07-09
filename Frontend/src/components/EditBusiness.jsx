@@ -14,10 +14,13 @@ function EditBusiness() {
   const [editForm, setEditForm] = useState({ name: "", link: "" });
   const toaster = useToaster();
 
+  const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL;
+
+
   // Fetch all businesses from the API
   const fetchBusinesses = async () => {
     try {
-      const response = await axios.get("http://kict-review-backend.vercel.app/businesses/all");
+      const response = await axios.get(`${baseUrl}/businesses/all`);
       setBusinesses(response.data);
       setFilteredBusinesses(response.data); // Initialize filtered list
     } catch (error) {
@@ -42,7 +45,7 @@ function EditBusiness() {
 
   const handleDelete = async (businessId) => {
     try {
-      await axios.delete(`http://kict-review-backend.vercel.app/businesses/del/${businessId}`);
+      await axios.delete(`${baseUrl}/businesses/del/${businessId}`);
       fetchBusinesses();
     } catch (error) {
       console.error("Error deleting business:", error);

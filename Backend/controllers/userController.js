@@ -7,7 +7,8 @@ const userController = {
     // Add a new user
     addUser: async (req, res) => {
         const { UserName, Password } = req.body;
-
+        // console.log("Received data for new user:", { UserName, Password }); // Helpful for debugging
+        
         try {
             const newUser = new User({
                 UserName,

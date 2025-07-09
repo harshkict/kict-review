@@ -17,11 +17,13 @@ const AddReview = () => {
     const [completeCount, setCompleteCount] = useState(0);
     const [incompleteCount, setIncompleteCount] = useState(0);
 
+    const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL; // Use environment variable for base URL
+
     // Fetch business data
     const fetchBusinessData = async () => {
         try {
             const response = await axios.get(
-                `http://kict-review-backend.vercel.app/businesses/get/${location.state.Id}`
+                `${baseUrl}/businesses/get/${location.state.Id}`
             );
             const unFilterData = response.data.Review.filter(
                 (value) => value.Status === "Incomplete"
@@ -66,7 +68,7 @@ const AddReview = () => {
         e.preventDefault();
         try {
             await axios.post(
-                `http://kict-review-backend.vercel.app/businesses/add/${location.state.Id}/review`,
+                `${baseUrl}/businesses/add/${location.state.Id}/review`,
                 { Description: description }
             );
             setDescription(""); // Reset the form
@@ -83,7 +85,7 @@ const AddReview = () => {
                 return;
             }
             await axios.post(
-                `http://kict-review-backend.vercel.app/businesses/${location.state.Id}/reviews/bulk-upload`,
+                `${baseUrl}/businesses/${location.state.Id}/reviews/bulk-upload`,
                 { reviews: jsonData }
             );
             alert("Bulk reviews uploaded successfully!");
@@ -107,7 +109,7 @@ const AddReview = () => {
         e.preventDefault(); // Prevent default form submission
         try {
             await axios.put(
-                `http://kict-review-backend.vercel.app/businesses/put/${location.state.Id}`,
+                `${baseUrl}/businesses/put/${location.state.Id}`,
                 { Name: editForm.name, Link: editForm.link }
             );
             setShowModal(false); // Close modal

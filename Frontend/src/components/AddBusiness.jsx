@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
 
 function AddBusiness() {
-  const baseUrl = "";
+  const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL; // Use environment variable for base URL
   const [formData, setFormData] = useState({
     businessName: "",
     businessLink: "",
@@ -19,7 +20,7 @@ function AddBusiness() {
 
     try {
       const response = await axios.post(
-        "http://kict-review-backend.vercel.app/businesses/add",
+        `${baseUrl}/businesses/add`,
         {
           Name: formData.businessName,
           Link: formData.businessLink,

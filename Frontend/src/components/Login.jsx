@@ -1,15 +1,20 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
-  const baseUrl = "http://kict-review-backend.vercel.app";
+  // const baseUrl = "http://kict-review-backend.vercel.app";
+  const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL;
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [formData, setFormData] = useState({
     UserName: "",
     Password: "",
   });
   const [error, setError] = useState("");
+
+  console.log(baseUrl);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
