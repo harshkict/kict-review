@@ -19,6 +19,6 @@ app.use("/businesses", businessRoutes);
 app.get('/', (req, res) => res.send('<h1 style="display:flex;height: 100%;align-items: center;justify-content: center;margin:0;">Server Is Running!!!!</h1>'));
 
 const PORT = 5000;
-// app.listen(PORT, () => console.log(`Server is Running on ${PORT}`));
+app.listen(PORT, () => console.log(`Server is Running on ${PORT}`));
 
 module.exports = app; // Export the app for testing or other purposes
